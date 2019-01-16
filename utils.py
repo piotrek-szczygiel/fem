@@ -10,8 +10,8 @@ log = numpy.log
 exp = numpy.exp
 
 
-def integrate(f, a, b):
-    return scipy.integrate.quad(f, a, b)[0]
+def integrate(f, l1, l2):
+    return scipy.integrate.quad(f, l1, l2)[0]
 
 
 def matrix(*dimensions):
@@ -23,9 +23,8 @@ def solve_linear(left, right):
 
 
 def show_graph(xs, ys):
-    matplotlib.pyplot.style.use('bmh')
     matplotlib.pyplot.title('y = u(x)')
-    matplotlib.pyplot.plot(xs, ys)
+    matplotlib.pyplot.plot(xs, ys, 'k', linewidth=3)
     matplotlib.pyplot.show()
 
 

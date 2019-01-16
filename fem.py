@@ -42,37 +42,37 @@ class FiniteElementMethod:
 
         return derivative
 
-    def lhs(self, u, v, u_d, v_d, ia, ib):
+    def lhs(self, u, v, u_d, v_d, l1, l2):
         """Return result of the equation's left-hand side - B(u, v)"""
 
         return (
                 -self.beta * u(0) * v(0)
-                - integrate(lambda x: self.a(x) * u_d(x) * v_d(x), ia, ib)
-                + integrate(lambda x: self.b(x) * u_d(x) * v(x), ia, ib)
-                + integrate(lambda x: self.c(x) * u(x) * v(x), ia, ib)
+                - integrate(lambda x: self.a(x) * u_d(x) * v_d(x), l1, l2)
+                + integrate(lambda x: self.b(x) * u_d(x) * v(x), l1, l2)
+                + integrate(lambda x: self.c(x) * u(x) * v(x), l1, l2)
         )
 
     def lhs_cell(self, i, j):
         """Return result of the equation's lhs for provided matrix indices"""
 
-        ia = max(0., (i - 1) / self.n)
-        ib = min(1., (j + 1) / self.n)
+        l1 = max(0., (i - 1) / self.n)
+        l2 = min(1., (j + 1) / self.n)
 
         return self.lhs(
             self.e(i),
             self.e(j),
             self.e_d(i),
             self.e_d(j),
-            ia,
-            ib
+            l1,
+            l2
         )
 
-    def rhs(self, v, ia, ib):
+    def rhs(self, v, l1, l2):
         """Return result of the equation's right-hand side - l(v)"""
 
         return (
                 -self.gamma * v(0)
-                + integrate(lambda x: self.f(x) * v(x), ia, ib)
+                + integrate(lambda x: self.f(x) * v(x), l1, l2)
         )
 
     def u_shift(self, x):
@@ -81,7 +81,7 @@ class FiniteElementMethod:
 
     def u_star(self, x, result):
         """Return result of u*(x) function for provided FEM matrix"""
-        return sum(ui * self.e(i)(x) for i, ui in enumerate(result))
+        return sum(u_k * self.e(k)(x) for k, u_k in enumerate(result))
 
     def solve(self):
         """Return approximated u(x) function"""
@@ -91,21 +91,21 @@ class FiniteElementMethod:
                 left[j][i] = self.lhs_cell(i, j)
 
         right = matrix(self.n)
-        for i in range(self.n):
-            right[i] = (
+        for k in range(self.n):
+            right[k] = (
                     self.rhs(
-                        self.e(i),
-                        max(0., (i - 1) / self.n),
-                        min(1., (i + 1) / self.n)
+                        self.e(k),
+                        max(0., (k - 1) / self.n),
+                        min(1., (k + 1) / self.n)
                     )
                     -
                     self.lhs(
                         self.u_shift,
-                        self.e(i),
+                        self.e(k),
                         lambda x: self.u1 * self.e_d(self.n)(x),
-                        self.e_d(i),
-                        max(0., (i - 1) / self.n),
-                        min(1., (i + 1) / self.n)
+                        self.e_d(k),
+                        max(0., (k - 1) / self.n),
+                        min(1., (k + 1) / self.n)
                     )
             )
 
