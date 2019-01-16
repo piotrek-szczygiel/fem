@@ -24,18 +24,18 @@ class FiniteElementMethod:
         self.u1 = u1
         self.n = n
 
-    def e(self, i):
+    def e(self, k):
         """Return the basis function."""
 
-        return lambda x: max(0, 1 - abs(x * self.n - i))
+        return lambda x: max(0, 1 - abs(x * self.n - k))
 
-    def e_d(self, i):
+    def e_d(self, k):
         """Return the derivative of the basis function."""
 
         def derivative(x):
-            if self.e(i)(x) == 0:
+            if self.e(k)(x) == 0:
                 return 0
-            elif x < i / self.n:
+            elif x < k / self.n:
                 return self.n
             else:
                 return -self.n
