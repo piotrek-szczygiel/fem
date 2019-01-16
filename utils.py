@@ -23,7 +23,9 @@ def solve_linear(left, right):
 
 
 def show_graph(xs, ys):
-    matplotlib.pyplot.plot(xs, ys, 'g', linewidth=3)
+    matplotlib.pyplot.style.use('bmh')
+    matplotlib.pyplot.title('y = u(x)')
+    matplotlib.pyplot.plot(xs, ys)
     matplotlib.pyplot.show()
 
 

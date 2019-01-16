@@ -86,9 +86,9 @@ class FiniteElementMethod:
     def solve(self):
         """Return approximated u(x) function"""
         left = matrix(self.n, self.n)
-        for i in range(self.n):
-            for j in range(self.n):
-                left[i][j] = self.lhs_cell(j, i)
+        for j in range(self.n):
+            for i in range(self.n):
+                left[j][i] = self.lhs_cell(i, j)
 
         right = matrix(self.n)
         for i in range(self.n):
