@@ -27,7 +27,7 @@ class FiniteElementMethod:
     def e(self, i):
         """Return the basis function."""
 
-        return lambda x: max(0, 1 - abs((x * self.n) - (i / self.n)))
+        return lambda x: max(0, 1 - abs(x * self.n - i))
 
     def e_d(self, i):
         """Return the derivative of the basis function."""
