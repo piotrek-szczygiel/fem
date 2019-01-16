@@ -26,10 +26,10 @@ if __name__ == '__main__':
         u1 = 1 / 2
         n = 100
     else:
-        exec('def a(x): return ' + input('a(x) = '))
-        exec('def b(x): return ' + input('b(x) = '))
-        exec('def c(x): return ' + input('c(x) = '))
-        exec('def f(x): return ' + input('f(x) = '))
+        exec('a = lambda x: ' + input('a(x) = '))
+        exec('b = lambda x: ' + input('b(x) = '))
+        exec('c = lambda x: ' + input('c(x) = '))
+        exec('f = lambda x: ' + input('f(x) = '))
         exec('beta = ' + input('beta = '))
         exec('gamma = ' + input('gamma = '))
         exec('u1 = ' + input('u1 = '))
