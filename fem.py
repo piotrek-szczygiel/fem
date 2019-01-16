@@ -47,7 +47,7 @@ class FiniteElementMethod:
 
         return (
                 -self.beta * u(0) * v(0)
-                + integrate(lambda x: self.a(x) * u_d(x) * v_d(x), ia, ib)
+                - integrate(lambda x: self.a(x) * u_d(x) * v_d(x), ia, ib)
                 + integrate(lambda x: self.b(x) * u_d(x) * v(x), ia, ib)
                 + integrate(lambda x: self.c(x) * u(x) * v(x), ia, ib)
         )
