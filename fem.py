@@ -33,7 +33,7 @@ class FiniteElementMethod:
         """Return the derivative of the basis function."""
 
         def derivative(x):
-            if x < (i - 1) / self.n or x > (i + 1) / self.n:
+            if self.e(i)(x) == 0:
                 return 0
             elif x < i / self.n:
                 return self.n
@@ -55,16 +55,16 @@ class FiniteElementMethod:
     def lhs_cell(self, i, j):
         """Return result of the equation's lhs for provided matrix indices"""
 
-        a = max(0., (i - 1) / self.n)
-        b = min(1., (j + 1) / self.n)
+        ia = max(0., (i - 1) / self.n)
+        ib = min(1., (j + 1) / self.n)
 
         return self.lhs(
             self.e(i),
             self.e(j),
             self.e_d(i),
             self.e_d(j),
-            a,
-            b
+            ia,
+            ib
         )
 
     def rhs(self, v, ia, ib):
@@ -76,7 +76,7 @@ class FiniteElementMethod:
         )
 
     def u_shift(self, x):
-        """Return result of ~u(x) function"""
+        """Return result of u~(x) function"""
         return self.u1 * self.e(self.n)(x)
 
     def u_star(self, x, result):
