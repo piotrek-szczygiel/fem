@@ -4,8 +4,9 @@ import matplotlib.pyplot
 import numpy
 import scipy.integrate
 
-sin = numpy.sin
+sqrt = numpy.sqrt
 cos = numpy.cos
+sin = numpy.sin
 log = numpy.log
 exp = numpy.exp
 

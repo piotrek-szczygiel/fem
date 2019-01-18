@@ -24,6 +24,37 @@ class FiniteElementMethod:
         self.u1 = u1
         self.n = n
 
+    def solve(self):
+        """Return approximated u(x) function"""
+
+        left = matrix(self.n, self.n)
+        for j in range(self.n):
+            for i in range(self.n):
+                left[j][i] = self.lhs_cell(i, j)
+
+        right = matrix(self.n)
+        for k in range(self.n):
+            right[k] = (
+                    self.rhs(
+                        self.e(k),
+                        self.e_triangle_left(k),
+                        self.e_triangle_right(k)
+                    )
+                    -
+                    self.lhs(
+                        self.u_shift,
+                        self.e(k),
+                        lambda x: self.u1 * self.e_d(self.n)(x),
+                        self.e_d(k),
+                        self.e_triangle_left(k),
+                        self.e_triangle_right(k)
+                    )
+            )
+
+        result = solve_linear(left, right)
+
+        return lambda x: self.u_shift(x) + self.u_star(x, result)
+
     def e(self, k):
         """Return the basis function."""
 
@@ -42,6 +73,16 @@ class FiniteElementMethod:
 
         return derivative
 
+    def e_triangle_left(self, k):
+        """Return left limit of basis function triangle."""
+
+        return max(0., (k - 1) / self.n)
+
+    def e_triangle_right(self, k):
+        """Return right limit of basis function triangle."""
+
+        return min(1., (k + 1) / self.n)
+
     def lhs(self, u, v, u_d, v_d, l1, l2):
         """Return result of the equation's left-hand side - B(u, v)"""
 
@@ -55,8 +96,8 @@ class FiniteElementMethod:
     def lhs_cell(self, i, j):
         """Return result of the equation's lhs for provided matrix indices"""
 
-        l1 = max(0., (i - 1) / self.n)
-        l2 = min(1., (j + 1) / self.n)
+        l1 = min(self.e_triangle_left(i), self.e_triangle_left(j))
+        l2 = max(self.e_triangle_right(i), self.e_triangle_right(j))
 
         return self.lhs(
             self.e(i),
@@ -77,38 +118,10 @@ class FiniteElementMethod:
 
     def u_shift(self, x):
         """Return result of u~(x) function"""
+
         return self.u1 * self.e(self.n)(x)
 
     def u_star(self, x, result):
         """Return result of u*(x) function for provided FEM matrix"""
+
         return sum(u_k * self.e(k)(x) for k, u_k in enumerate(result))
-
-    def solve(self):
-        """Return approximated u(x) function"""
-        left = matrix(self.n, self.n)
-        for j in range(self.n):
-            for i in range(self.n):
-                left[j][i] = self.lhs_cell(i, j)
-
-        right = matrix(self.n)
-        for k in range(self.n):
-            right[k] = (
-                    self.rhs(
-                        self.e(k),
-                        max(0., (k - 1) / self.n),
-                        min(1., (k + 1) / self.n)
-                    )
-                    -
-                    self.lhs(
-                        self.u_shift,
-                        self.e(k),
-                        lambda x: self.u1 * self.e_d(self.n)(x),
-                        self.e_d(k),
-                        max(0., (k - 1) / self.n),
-                        min(1., (k + 1) / self.n)
-                    )
-            )
-
-        result = solve_linear(left, right)
-
-        return lambda x: self.u_shift(x) + self.u_star(x, result)
