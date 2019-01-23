@@ -46,14 +46,14 @@ For quick testing with default parameters:
 <table border="0">
     <tr>
         <td>
-            <img alt="e1" src="math/e1.svg" />
-            <img alt="e2" src="math/e2.svg" />
-            <img alt="e3" src="math/e3.svg" />
+            <img alt="e1" src="math/e1.svg"><br><br>
+            <img alt="e2" src="math/e2.svg"><br>
+            <img alt="e3" src="math/e3.svg">
         </td>
         <td>
-            <img alt="e4" src="math/e4.svg" />
-            <img alt="e5" src="math/e5.svg" />
-            <img alt="e6" src="math/e6.svg" />
+            <img alt="e4" src="math/e4.svg"><br><br>
+            <img alt="e5" src="math/e5.svg"><br>
+            <img alt="e6" src="math/e6.svg">
         </td>
     </tr>
 </table>
