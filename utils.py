@@ -28,7 +28,7 @@ def graph(xs, ys):
     matplotlib.pyplot.plot(xs, ys, 'k', linewidth=3)
 
     matplotlib.pyplot.xlim(0, 1)
-    a = min(0, min(ys))
+    a = min(0, min(ys) - 0.1)
     b = max(ys) + 0.1
     matplotlib.pyplot.ylim(a, b)
 
