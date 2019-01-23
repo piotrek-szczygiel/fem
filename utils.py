@@ -26,6 +26,12 @@ def solve_linear(left, right):
 def graph(xs, ys):
     matplotlib.pyplot.title('y = u(x)')
     matplotlib.pyplot.plot(xs, ys, 'k', linewidth=3)
+
+    matplotlib.pyplot.xlim(0, 1)
+    a = min(-2, min(ys))
+    b = max(2, max(ys))
+    matplotlib.pyplot.ylim(a, b)
+
     matplotlib.pyplot.show()
 
 

@@ -17,14 +17,14 @@ if __name__ == '__main__':
     n: int
 
     if len(sys.argv) == 2 and sys.argv[1] == 'default':
-        a = lambda x: 0
-        b = lambda x: 1
+        a = lambda x: 1
+        b = lambda x: 0
         c = lambda x: 0
-        f = lambda x: 3 * sin(x * 10) * x
+        f = lambda x: 0
         beta = 0
         gamma = 0
-        u1 = 1 / 2
-        n = 100
+        u1 = 1
+        n = 50
     else:
         exec('a = lambda x: ' + input('a(x) = '))
         exec('b = lambda x: ' + input('b(x) = '))

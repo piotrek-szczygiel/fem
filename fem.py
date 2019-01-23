@@ -8,7 +8,7 @@ class FiniteElementMethod:
 
     Model conditions:
         (a(x)u'(x))' + b(x)u'(x) + c(x)u(x) = f(x),  x e [0, 1]
-        a(0)u'(0) + beta*u(0) = gamma
+        -a(0)u'(0) + beta*u(0) = gamma
         u(1) = u1
     """
 
