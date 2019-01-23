@@ -41,8 +41,8 @@ For quick testing with default parameters:
 
 ## Basis function
 
-<table border="0">
-    <tr><td><img alt="xk" src="math/xk.svg"></td></tr>
+<table style="unset">
+    <tr><td colspan=2><img alt="xk" src="math/xk.svg"></td></tr>
     <tr>
         <td>
             <img alt="e1" src="math/e1.svg"><br><br>
@@ -55,6 +55,6 @@ For quick testing with default parameters:
             <img alt="e6" src="math/e6.svg">
         </td>
     </tr>
-    <tr><td><img alt="e7" src="math/e7.svg"></td></tr>
-    <tr><td><img alt="e8" src="math/e8.svg"></td></tr>
+    <tr><td colspan=2><img alt="e7" src="math/e7.svg"></td></tr>
+    <tr><td colspan=2><img alt="e8" src="math/e8.svg"></td></tr>
 </table>
