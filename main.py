@@ -42,4 +42,4 @@ if __name__ == '__main__':
     xs = generate_xs(0, 1, 50)
     ys = [u(x) for x in xs]
 
-    show_graph(xs, ys)
+    graph(xs, ys)

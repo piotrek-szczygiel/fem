@@ -109,7 +109,7 @@ class FiniteElementMethod:
         )
 
     def rhs(self, v, l1, l2):
-        """Return result of the equation's right-hand side - l(v)"""
+        """Return result of the equation's rhs - l(v)"""
 
         return (
                 - self.gamma * v(0)

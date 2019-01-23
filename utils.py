@@ -23,7 +23,7 @@ def solve_linear(left, right):
     return numpy.linalg.solve(left, right)
 
 
-def show_graph(xs, ys):
+def graph(xs, ys):
     matplotlib.pyplot.title('y = u(x)')
     matplotlib.pyplot.plot(xs, ys, 'k', linewidth=3)
     matplotlib.pyplot.show()
