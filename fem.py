@@ -58,7 +58,7 @@ class FiniteElementMethod:
     def e(self, k):
         """Return the basis function."""
 
-        return lambda x: max(0, 1 - abs(x * self.n - k))
+        return lambda x: max(0, 1 - abs(self.n * x - k))
 
     def e_d(self, k):
         """Return the derivative of the basis function."""
@@ -87,10 +87,10 @@ class FiniteElementMethod:
         """Return result of the equation's left-hand side - B(u, v)"""
 
         return (
-                -self.beta * u(0) * v(0)
-                - integrate(lambda x: self.a(x) * u_d(x) * v_d(x), l1, l2)
-                + integrate(lambda x: self.b(x) * u_d(x) * v(x), l1, l2)
-                + integrate(lambda x: self.c(x) * u(x) * v(x), l1, l2)
+                - self.beta * v(0) * u(0)
+                - integrate(lambda x: self.a(x) * v_d(x) * u_d(x), l1, l2)
+                + integrate(lambda x: self.b(x) * v(x) * u_d(x), l1, l2)
+                + integrate(lambda x: self.c(x) * v(x) * u(x), l1, l2)
         )
 
     def lhs_cell(self, i, j):
@@ -112,8 +112,8 @@ class FiniteElementMethod:
         """Return result of the equation's right-hand side - l(v)"""
 
         return (
-                -self.gamma * v(0)
-                + integrate(lambda x: self.f(x) * v(x), l1, l2)
+                - self.gamma * v(0)
+                + integrate(lambda x: v(x) * self.f(x), l1, l2)
         )
 
     def u_shift(self, x):
