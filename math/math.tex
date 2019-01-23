@@ -18,8 +18,8 @@ y = nx - k + 1
 e_k =
 \left\{
 \begin{array}{ll}
-    1=ax_k + b\\
-    0=ax_{k+1} + b
+    1 = ax_k + b\\
+    0 = ax_{k+1} + b
 \end{array}
 \right.\\[15pt]
 
@@ -28,17 +28,18 @@ y=\frac{x - x_{k+1}}{x_k - x_{k+1}}\\[10pt]
 y = -nx + k + 1
 
 
+
 y =
 \left\{
 \begin{array}{ll}
-    1 + k(n - 1), \;\;\; x <    \frac{k}{n}\\[7pt]
-    1 - k(n - 1), \;\;\; x \geq \frac{k}{n}
+    1 + nx - k, \;\;\; x <    \frac{k}{n}\\[7pt]
+    1 - nx + k, \;\;\; x \geq \frac{k}{n}
 \end{array}
 \right.
 
 \;\;\Rightarrow\;\;
 
-y=1 - \left | k(n-1) \right |
+e_k = max(0,\;\; 1 - \left | nx - k \right |)
 
 
 
