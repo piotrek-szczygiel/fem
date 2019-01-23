@@ -41,21 +41,20 @@ For quick testing with default parameters:
 
 ## Basis function
 
-![xk](math/xk.svg)
-
 <table border="0">
+    <tr><td><img alt="xk" src="math/xk.svg"></td></tr>
     <tr>
         <td>
             <img alt="e1" src="math/e1.svg"><br><br>
-            <img alt="e2" src="math/e2.svg"><br>
+            <img alt="e2" src="math/e2.svg"><br><br>
             <img alt="e3" src="math/e3.svg">
         </td>
         <td>
             <img alt="e4" src="math/e4.svg"><br><br>
-            <img alt="e5" src="math/e5.svg"><br>
+            <img alt="e5" src="math/e5.svg"><br><br>
             <img alt="e6" src="math/e6.svg">
         </td>
     </tr>
+    <tr><td><img alt="e7" src="math/e7.svg"></td></tr>
+    <tr><td><img alt="e8" src="math/e8.svg"></td></tr>
 </table>
-
-![e7](math/e7.svg)

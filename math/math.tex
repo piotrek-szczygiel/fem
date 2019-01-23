@@ -16,7 +16,6 @@ y = \frac{x - x_{k-1}}{x_k - x_{k-1}}
 y = nx - k + 1
 
 
-
 e_k =
 \left\{
 \begin{array}{ll}
@@ -31,7 +30,6 @@ y=\frac{x - x_{k+1}}{x_k - x_{k+1}}
 y = -nx + k + 1
 
 
-
 y =
 \left\{
 \begin{array}{ll}
@@ -43,6 +41,17 @@ y =
 \;\;\Rightarrow\;\;
 
 e_k = max(0,\;\; 1 - \left | nx - k \right |)
+
+
+
+e'_k =
+\left\{
+\begin{array}{ll}
+    0,\;\;\;\;\; e_k = 0\\[5pt]
+    n,\;\;\;\;\; x < \frac{k}{n}\\[5pt]
+    -n,\;\; x \geq \frac{k}{n}
+\end{array}
+\right.
 
 
 
