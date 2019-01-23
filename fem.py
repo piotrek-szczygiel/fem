@@ -44,7 +44,7 @@ class FiniteElementMethod:
                     self.lhs(
                         self.u_shift,
                         self.e(k),
-                        lambda x: self.u1 * self.e_d(self.n)(x),
+                        self.u_shift_d,
                         self.e_d(k),
                         self.e_triangle_left(k),
                         self.e_triangle_right(k)
@@ -120,6 +120,11 @@ class FiniteElementMethod:
         """Return result of u~(x) function"""
 
         return self.u1 * self.e(self.n)(x)
+
+    def u_shift_d(self, x):
+        """Return result of u~'(x) function"""
+
+        return self.u1 * self.e_d(self.n)(x)
 
     def u_star(self, x, result):
         """Return result of u*(x) function for provided FEM matrix"""
