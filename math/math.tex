@@ -1,0 +1,75 @@
+x_k = \frac{k}{n}
+
+
+
+e_k =
+\left\{
+\begin{array}{ll}
+    1 = ax_k + b\\
+    0 = ax_{k-1} + b
+\end{array}
+\right.\\[15pt]
+
+y=\frac{x - x_{k-1}}{x_k - x_{k-1}}\\[10pt]
+
+y = nx - k + 1
+
+
+e_k =
+\left\{
+\begin{array}{ll}
+    1=ax_k + b\\
+    0=ax_{k+1} + b
+\end{array}
+\right.\\[15pt]
+
+y=\frac{x - x_{k+1}}{x_k - x_{k+1}}\\[10pt]
+
+y = -nx + k + 1
+
+
+y =
+\left\{
+\begin{array}{ll}
+    1 + k(n - 1), \;\;\; x <    \frac{k}{n}\\[7pt]
+    1 - k(n - 1), \;\;\; x \geq \frac{k}{n}
+\end{array}
+\right.
+
+\;\;\Rightarrow\;\;
+
+y=1 - \left | k(n-1) \right |
+
+
+
+\left\{
+\begin{array}{ll}
+    x \in [0, 1]\\[12pt]
+    (a(x)u'(x))' + b(x)u'(x) + c(x)u(x) = f(x)\\[5pt]
+    -a(0)u'(0) + \beta u(0) = \gamma\\[5pt]
+    u(1) = u_1
+\end{array}
+\right.
+
+
+B(u, v) = l(v)
+
+
+
+{
+B(u,v)=
+- \beta v(0)u(0)\;
+- \int_{0}^{1} a(x)v'(x)u'(x) \; dx \;
++ \int_{0}^{1} b(x)v(x)u'(x) \; dx \;
++ \int_{0}^{1} c(x)v(x)u(x) \; dx
+}
+
+
+
+{
+l(v) = -\gamma v(0) + \int_{0}^{1} v(x) f(x) \; dx
+}
+
+
+
+a(x),\; b(x),\; c(x),\; f(x),\; \beta,\; \gamma,\; u_1
